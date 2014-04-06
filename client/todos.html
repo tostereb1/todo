@@ -3,9 +3,19 @@
 </head>
 
 <body>
+<div id="proj">
+ <div id="top-tag-filter">
+    {{> tag_filter}}
+  </div>
 
- {{>home}}
+  <div id="main-pane" >
+    {{> todos}}
+  </div>
 
+  <div id="side-pane">
+    {{> lists}}
+  </div>
+</div>
 </body>
 
 <template name="home">
@@ -16,25 +26,17 @@
 {{>page}}
 </template>
 
-
 <template name="page">
 
-  <div class="container">
-  {{> loginButtons }} 
-  {{#if isLoggedIn }}
-      <div id="side-pane">  {{> lists}}</div>
-     <div id="main-pane"> {{> todos}} </div>
-    {{> todo_item}}
-    <div id="top-tag-filter">  {{> tag_filter}}</div>
-       
-  {{/if}} 
+  <div class="container" id="bottom-pane">
+  
   </div>
 </template>
 
 
 <template name="lists">
 {{> loginButtons }} 
-  <h3>Todo Lists</h3>
+  <h3>Name Project</h3>
   {{#if loading}}
     <div id="lists">Loading...</div>
   {{else}}
@@ -56,7 +58,7 @@
       {{/each}}
     </div>
     <div id="createList">
-      <input type="text" id="new-list" placeholder="New list" />
+      <input type="text" id="new-list" class="form-control" placeholder="New prokect" />
     </div>
   {{/if}}
 </template>
@@ -68,7 +70,7 @@
         Loading...
       {{else}}
         <div id="new-todo-box">
-          <input type="text" id="new-todo" placeholder="New item" />
+          <input type="text" id="new-todo" placeholder="New task" />
         </div>
         <ul id="item-list">
           {{#each todos}}
@@ -81,7 +83,7 @@
 </template>
 
 <template name="todo_item">
-  <li class="todo {{done_class}}">
+  <li   class="todo {{done_class}}" id="task">
     {{#if editing}}
       <div class="edit">
         <input id="todo-input" type="text" value="{{text}}" />
@@ -115,7 +117,7 @@
 
 <template name="tag_filter">
   <div id="tag-filter" class="tag-list">
-    <div class="label">Show:</div>
+    <div class="label">Team member:</div>
     {{#each tags}}
       <div class="tag {{selected}}">
         {{tag_text}} <span class="count">({{count}})</span>

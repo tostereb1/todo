@@ -77,9 +77,7 @@ var activateInput = function (input) {
 /////////Loggedin///////////
 
 
-Template.page.isLoggedIn = function () {
-  return !!Meteor.user();
-};
+
 
 
 ////////// Lists //////////
@@ -204,6 +202,18 @@ Template.todo_item.adding_tag = function () {
 };
 
 Template.todo_item.events({
+  'contextmenu' : function(){
+    
+    $('#item-list').draggable();
+    
+    if (event.preventDefault) {
+      event.preventDefault();
+    }else{
+      event.returnValue= false;
+      return false;
+    };
+
+  },
   'click .check': function () {
     Todos.update(this._id, {$set: {done: !this.done}});
   },
