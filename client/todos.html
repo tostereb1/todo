@@ -3,6 +3,8 @@
 </head>
 
 <body>
+{{> loginButtons }} 
+{{#if currentUser}}
 <div id="proj">
  <div id="top-tag-filter">
     {{> tag_filter}}
@@ -16,6 +18,7 @@
     {{> lists}}
   </div>
 </div>
+{{/if}}
 </body>
 
 <template name="home">
@@ -35,7 +38,7 @@
 
 
 <template name="lists">
-{{> loginButtons }} 
+
   <h3>Name Project</h3>
   {{#if loading}}
     <div id="lists">Loading...</div>

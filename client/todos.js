@@ -76,7 +76,12 @@ var activateInput = function (input) {
 };
 /////////Loggedin///////////
 
-
+ Deps.autorun(function(){
+  if(Meteor.user())
+    console.log("User logged in: " + Meteor.user());
+  else 
+    console.log("User logged out!");
+ });
 
 
 
@@ -202,9 +207,10 @@ Template.todo_item.adding_tag = function () {
 };
 
 Template.todo_item.events({
-  'contextmenu' : function(){
-    
-    $('#item-list').draggable();
+  
+  'contextmenu' : function() {
+    $(document).ready();
+    $('#task').draggable();
     
     if (event.preventDefault) {
       event.preventDefault();
@@ -214,6 +220,7 @@ Template.todo_item.events({
     };
 
   },
+
   'click .check': function () {
     Todos.update(this._id, {$set: {done: !this.done}});
   },

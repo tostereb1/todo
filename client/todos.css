@@ -41,14 +41,23 @@ h3 {
     text-align: center;
 }
 
-
-
-#top-tag-filter, #main-pane, #side-pane, #bottom-pane {
+#proj {
     border: 1px solid;
     border-radius: 10px;
     background: #ddd;
     padding: 0%;
     margin: 5%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+#top-tag-filter, #main-pane, #side-pane, #bottom-pane {
+    
+    background: #ddd;
     position: absolute;
     left: 0;
     right: 0;
